@@ -8,7 +8,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = '//api.chucknorris.io';
+  // TODO Change swagger generation command to use this api url
+  rootUrl: string = 'https://api.chucknorris.io';
 }
 
 export interface ApiConfigurationInterface {

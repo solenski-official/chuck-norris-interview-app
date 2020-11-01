@@ -13,9 +13,7 @@ import { JokeSearchResult } from '../models/joke-search-result';
 /**
  * Joke Controller
  */
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 class JokeControllerService extends __BaseService {
   static readonly getCategoryValuesUsingGETPath = '/jokes/categories';
   static readonly getRandomJokeUsingGETPath = '/jokes/random';

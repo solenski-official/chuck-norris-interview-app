@@ -1,16 +1,28 @@
-
 import {
   ActionReducer,
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
-  MetaReducer
+  MetaReducer,
+  createReducer,
+  on,
 } from '@ngrx/store';
+import { CategoriesActions, categoriesFetched } from './actions';
 
 export interface CategoriesState {
-
+  categories: any;
 }
 
-export const reducers: ActionReducerMap<CategoriesState> = {
-
+const initialState: CategoriesState = {
+  categories: null,
 };
+
+export const categoriesSelector = (state: CategoriesState) => state.categories;
+
+export const categoryReducer = createReducer(
+  initialState,
+  on(categoriesFetched, (state, action) => ({
+    ...state,
+    categories: action.categories,
+  }))
+);
