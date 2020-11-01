@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./categories-dumb.component.scss'],
 })
 export class CategoriesDumbComponent implements OnInit {
-  @Input() categories: any[];
+  @Input() categories: string[];
 
   constructor() {}
 
