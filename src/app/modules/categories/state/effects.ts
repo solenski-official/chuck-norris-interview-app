@@ -18,14 +18,15 @@ export class CategoriesEffects {
     )
   );
 
-  // #region  service-like methods. I like putting them as private in here so no one uses
+  // #region  service-like methods.
+  // I like putting them as private in here so no one uses
   // services directly in their components
   private fetchCategories(): Observable<string[]> {
     // The API's swagger configuration is badly written.
-    // Swagger thinks this method returns string but in fact it returns a string[]
-    return (this.jokeService.getCategoryValuesUsingGET() as any) as Observable<
-      string[]
-    >;
+    // Returns JSON as string...
+    return this.jokeService
+      .getCategoryValuesUsingGET()
+      .pipe(map((result) => JSON.parse(result))) as Observable<string[]>;
   }
   // #endregion
 

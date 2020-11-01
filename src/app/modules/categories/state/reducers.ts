@@ -16,8 +16,11 @@ export interface CategoriesState {
 const initialState: CategoriesState = {
   categories: null,
 };
-
-export const categoriesSelector = (state: CategoriesState) => state.categories;
+const featureSelector = createFeatureSelector('Categories');
+export const categoriesSelector = createSelector(
+  featureSelector,
+  (state: CategoriesState) => state.categories
+);
 
 export const categoryReducer = createReducer(
   initialState,
