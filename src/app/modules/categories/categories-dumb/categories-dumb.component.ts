@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-categories-dumb',
@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CategoriesDumbComponent implements OnInit {
   @Input() categories: string[];
-
+  @Output() categoryClicked = new EventEmitter<{ category: string }>();
   constructor() {}
 
   ngOnInit(): void {}

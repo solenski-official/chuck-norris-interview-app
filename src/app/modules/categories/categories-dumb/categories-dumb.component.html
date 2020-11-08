@@ -1,3 +1,5 @@
 <div class="row" *ngFor="let category of categories">
-    <button>{{ category }}</button>
+  <button (click)="categoryClicked.emit({ category: category })">
+    {{ category }}
+  </button>
 </div>

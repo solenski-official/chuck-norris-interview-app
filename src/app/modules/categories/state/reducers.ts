@@ -1,13 +1,10 @@
 import {
-  ActionReducer,
-  ActionReducerMap,
   createFeatureSelector,
   createSelector,
-  MetaReducer,
   createReducer,
   on,
 } from '@ngrx/store';
-import { CategoriesActions, categoriesFetched } from './actions';
+import { categoriesFetched } from './actions';
 
 export interface CategoriesState {
   categories: any;
