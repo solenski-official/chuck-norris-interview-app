@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { goBack } from './state/actions';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { map, tap } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isGoBackDisabled: Observable<boolean> = this.route.fragment.pipe(tap(x=> console.log(x)),
+  isGoBackDisabled: Observable<boolean> = this.route.fragment.pipe(
     map((fragment) => fragment === 'categories')
   );
   constructor(private store: Store, private route: ActivatedRoute) {}

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { categoriesFetched,fetchCategories} from './actions';
+import { map, switchMap, shareReplay } from 'rxjs/operators';
+import { categoriesFetched, fetchCategories } from './actions';
 import { JokeControllerService } from '../../../../libs/chuck-norris-api-client/services/joke-controller.service';
 @Injectable()
 export class CategoriesEffects {
@@ -16,6 +16,7 @@ export class CategoriesEffects {
       )
     )
   );
+  cachedGetCategory: Observable<string>;
 
   // #region  service-like methods.
   // I like putting them as private in here so no one uses
@@ -23,13 +24,18 @@ export class CategoriesEffects {
   private fetchCategories(): Observable<string[]> {
     // The API's swagger configuration is badly written.
     // Returns JSON as string...
-    return this.jokeService
-      .getCategoryValuesUsingGET()
-      .pipe(map((result) => JSON.parse(result))) as Observable<string[]>;
+    return this.cachedGetCategory.pipe(
+      map((result) => JSON.parse(result))
+    ) as Observable<string[]>;
   }
   // #endregion
 
   constructor(
     private actions$: Actions,
-    private jokeService: JokeControllerService  ) {}
+    private jokeService: JokeControllerService
+  ) {
+    this.cachedGetCategory = this.jokeService
+      .getCategoryValuesUsingGET()
+      .pipe(shareReplay(1));
+  }
 }

@@ -5,13 +5,13 @@ const routes: Routes = [
   {
     path: 'jokes/:category',
     loadChildren: () =>
-      import('./modules/jokes/jokes.module').then((x) => x.JokesModule),
+      import('./modules/jokes/jokes.module').then((module) => module.JokesModule),
   },
   {
     path: 'categories',
     loadChildren: () =>
       import('./modules/categories/categories.module').then(
-        (x) => x.CategoriesModule
+        (module) => module.CategoriesModule
       ),
   },
   {

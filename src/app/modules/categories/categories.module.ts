@@ -13,6 +13,7 @@ import { ApiModule } from '../../../libs/chuck-norris-api-client/api.module';
   imports: [
     CommonModule,
     ApiModule,
+
     StoreModule.forFeature('Categories', categoryReducer),
     EffectsModule.forFeature([CategoriesEffects]),
     CategoriesRoutingModule,

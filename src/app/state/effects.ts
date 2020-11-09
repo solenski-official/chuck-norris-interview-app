@@ -4,7 +4,6 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { goBack } from '../state/actions';
 import { categoryClicked } from '../modules/categories/state/actions';
-// TODO look through access modifies
 @Injectable()
 export class AppEffects {
   navigateToCategoryEffect = createEffect(
