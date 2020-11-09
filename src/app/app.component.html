@@ -1,3 +1,8 @@
+<nav>
+  <section class="container">
+    <button [disabled] = "isGoBackDisabled | async" (click) = "goBackClicked()"> Go back </button>
+  </section>
+</nav>
 <main class="container">
   <section class="logo row">
     <div class="column" ></div>

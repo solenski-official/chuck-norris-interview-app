@@ -8,9 +8,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { jokeReducer } from './state/reducers';
 import { JokeEffects } from './state/effects';
+import { ApiModule } from 'src/libs/chuck-norris-api-client/api.module';
 @NgModule({
   declarations: [JokesDumbComponent, JokesSmartComponent],
   imports: [
+    ApiModule,
     EffectsModule.forFeature([JokeEffects]),
     StoreModule.forFeature('Joke', jokeReducer),
     CommonModule,
